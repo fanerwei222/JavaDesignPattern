@@ -14,8 +14,12 @@ public class PrototypeClient
         a.setPersonInfo("2.16", "男", "XX大学");
         a.setWorkExperience("2012.09.05", "XX科技有限公司");
 
+        PrototypeManager manager = new PrototypeManager();
+        manager.put("personInfo", a);
+
+        Resume clone = (Resume) manager.get("personInfo");
         //克隆B对象
-        Resume b = (Resume) a.clone();
+        Resume b = (Resume) clone.clone();
 
         //输出A和B对象
         System.out.println("----------------A--------------");
@@ -37,16 +41,3 @@ public class PrototypeClient
         System.out.println(a.getClass() == b.getClass());
     }
 }
-
-
-/** *****/
-----------------A--------------
-姓名：小李子
-生日:2.16,性别:男,毕业学校：XX大学
-工作年限:2012.09.05,公司:XX科技有限公司
-----------------B--------------
-姓名：小李子
-生日:2.16,性别:男,毕业学校：XX大学
-工作年限:2012.09.05,公司:XX科技有限公司
-A==B?false
-A.getClass()==B.getClass()?true
