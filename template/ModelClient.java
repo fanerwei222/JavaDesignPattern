@@ -14,5 +14,12 @@ public class ModelClient
         System.out.println("==============================");
         CarModel normalCar = new NormalCar();
         normalCar.excet();
+        System.out.println("==============================");
+        AutoCar autoCarWithStub = new AutoCar();
+        /**
+         * 有一款可以挂挡的自动车
+         */
+        autoCarWithStub.setHasStub(true);
+        autoCarWithStub.excet();
     }
 }
