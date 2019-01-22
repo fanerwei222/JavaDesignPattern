@@ -1,0 +1,56 @@
+package main.designPattern.iterator.extrinsic;
+
+/**
+ * 聚提聚集角色类
+ * 实现了抽象聚集角色类所要求的借口，也就是createIterator()方法。
+ * 此外，还有方法getElement()向外界提供聚集元素，
+ * 而方法size()向外界提供聚集的大小等
+ * @author fanwei
+ *
+ */
+public class ConcreteAggregate extends Aggregate
+{
+
+    private Object[] objArray = null;
+
+    /**
+     * 构造方法，传入聚合对象的具体内容
+     * @param objArray
+     */
+    public ConcreteAggregate(Object[] objArray)
+    {
+        this.objArray = objArray;
+    }
+
+    @Override
+    public Iterator createIterator()
+    {
+        return new ConcreteIterator(this);
+    }
+
+    /**
+     * 取值方法，向外界提供聚集元素
+     * @param index
+     * @return
+     */
+    public Object getElement(int index)
+    {
+        if (index < objArray.length)
+        {
+            return objArray[index];
+        } else
+        {
+            return null;
+        }
+    }
+
+    /**
+     * 取值方法，向外界提供聚集的大小
+     * @return
+     */
+    public int size()
+    {
+        return objArray.length;
+    }
+
+}
